@@ -22,22 +22,22 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema)
 
 if(process.argv.length === 3){
-    Person
-        .find({})
-        .then(persons => {
-            console.log("phonebook:")
-            persons.map(person => console.log(`${person.name} ${person.number}`))
-            mongoose.connection.close()
-        })
-} else {
-    const person = new Person({
-        name,
-        number
+  Person
+    .find({})
+    .then(persons => {
+      console.log('phonebook:')
+      persons.map(person => console.log(`${person.name} ${person.number}`))
+      mongoose.connection.close()
     })
-    person
-        .save(person)
-        .then(result => {
-            console.log(`added ${person.name} number ${person.number} to phonebook`)
-            mongoose.connection.close()
-        })
+} else {
+  const person = new Person({
+    name,
+    number
+  })
+  person
+    .save(person)
+    .then(result => {
+      console.log(`added ${person.name} number ${person.number} to phonebook`)
+      mongoose.connection.close()
+    })
 }
